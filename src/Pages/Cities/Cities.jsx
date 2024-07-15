@@ -60,8 +60,8 @@ const Cities = () => {
       </div>
       {
         Filtered_Cities.map((item) => (
-          <>
-            <div className="cities-header" key={item._id}>
+          <React.Fragment key={item._id}>
+            <div className="cities-header" >
               <img src={backend_url + '/images/' + item.img} alt="" />
               <h1>{item.city}</h1>
             </div>
@@ -74,12 +74,12 @@ const Cities = () => {
             </div>
             <div className="cities-paragraphs">
               {
-                item.paragraphs.map((para) => (
-                  <>
-                    <h1 key={item._id}>{`Why we love ${item.city}`}</h1>
-                    <p key={item._id}>{para.p1}</p>
-                    <p key={item._id}>{para.p2}</p>
-                  </>
+                item.paragraphs.map((para, index) => (
+                  <React.Fragment key={index}>
+                    <h1 >{`Why we love ${item.city}`}</h1>
+                    <p >{para.p1}</p>
+                    <p >{para.p2}</p>
+                  </React.Fragment>
                 ))
               }
             </div>
@@ -90,8 +90,8 @@ const Cities = () => {
               </div>
               <div className="gallery-images" ref={ref}>
                 {
-                  item.gallery.map((image) => (
-                    <img key={item._id} src={backend_url + "/images/" + image} alt="" />
+                  item.gallery.map((image, index) => (
+                    <img key={index} src={backend_url + "/images/" + image} alt="" />
                   ))
                 }
               </div>
@@ -120,7 +120,7 @@ const Cities = () => {
                     )
                 }
             </div>
-          </>
+          </React.Fragment>
         ))
       }
     </div>
